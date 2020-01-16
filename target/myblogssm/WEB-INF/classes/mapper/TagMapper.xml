@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.myblogssm.dao.TagMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.myblogssm.pojo.Tag" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.qf.myblogssm.pojo.Tag" >
+    insert into t_tag (id, tag)
+    values (#{id,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR})
+  </insert>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    SELECT DISTINCT tag FROM t_tag
+  </select>
+
+  <select id="selectTag" resultType="java.lang.Integer">
+    select count(*) from t_tag
+  </select>
+
+  <select id="selectTagList" resultMap="BaseResultMap">
+    select * from t_tag
+  </select>
+
+
+</mapper>
